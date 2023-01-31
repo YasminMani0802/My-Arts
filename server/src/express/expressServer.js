@@ -79,6 +79,7 @@ server.delete('/products/remove-from-favourites', authenticate, removeFromFavour
 server.get('/products/get-product-by-id', authenticate, getProductByID);
 server.get('/products/is-favourite', authenticate, isFavourite);
 server.post('/save-image', authenticateArtist, saveImage);
+server.use('/images', express.static('src/images'));
 
 
 
