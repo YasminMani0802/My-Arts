@@ -1,0 +1,5 @@
+{
+   "/save-image": {
+    "target": "http://localhost:3000"
+   }
+}

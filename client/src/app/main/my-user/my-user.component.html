@@ -1,0 +1,28 @@
+<div class="container">
+
+  <div class="columns is-centered">
+
+    <div class="column card box is-half">
+
+      <p class="title has-text-centered is-full-width">
+        {{user.fullName}}
+      </p>
+
+
+
+      <div class="card-content">
+        <div class="content">
+          <p>{{user.email}}</p>
+          <p>{{user.phone}}</p>
+
+        </div>
+      </div>
+      <div class="card">
+        <footer class="card-footer">
+          <a (click)="delete()" class="card-footer-item">Delete my user</a>
+          <a (click)='update()' class="card-footer-item">Edit my details</a>
+        </footer>
+      </div>
+
+    </div>
+  </div>

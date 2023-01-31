@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="columns is-centered is-mobile">
+    <div class="column is-4-desktop is-6-tablet is-8-mobile">
+      <input type="search" [(ngModel)]="searchVal" placeholder="search" class="input">
+    </div>
+  </div>
+</div>
+
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-3-desktop is-3-tablet" *ngFor="let product of myFavourites | search : searchVal;">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img [src]="product.imagePath" [alt]='product.name'>
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">{{product.name}}</p>
+                <p>{{product.price}}</p>
+                <a class="subtitle is-6" (click)="goToArtistPage(product.artistName)">{{product.artistName}}</a>
+              </div>
+            </div>
+
+            <div class="content">{{product.description}}</div>
+
+
+            <div class="card">
+              <footer class="card-footer">
+                <a (click)="removeFromFavourites(product._id)" class="card-footer-item">Remove from
+                  favourites</a>
+              </footer>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,84 @@
+<div class="container">
+
+  <div class="columns is-centered">
+
+    <div class="column box is-half" [formGroup]="form">
+      <h2 class="title has-text-centered is-full-width">Add product</h2>
+
+
+      <div class="field">
+        <label class="label">*Name:</label>
+        <div class="control">
+          <input class="input" type="text" formControlName="name">
+          <span *ngIf="name && name.invalid && name.touched" class="help is-danger">This field must include
+            at
+            least 3 characters</span>
+
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Description:</label>
+        <div class="control">
+          <textarea class="textarea" formControlName="description"></textarea>
+
+        </div>
+
+      </div>
+
+      <div class="field is-grouped">
+        <label class="label">*Price:</label>
+        <div class="control">
+          <input class="input" type="number" formControlName="numberOfPrice">
+          <span *ngIf="numberOfPrice && numberOfPrice.invalid && numberOfPrice.touched" class="help is-danger">Invaild
+            price</span>
+        </div>
+
+        <div class="control">
+          <div class="select">
+            <select formControlName="typeOfPrice">
+              <option>$</option>
+              <option>₪</option>
+              <option>&#x20AC;</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">*Image:</label>
+        <div class="control">
+          <div class="file">
+            <label class="file-label">
+              <input class="file-input" type="file" (change)="handleFileUpload($event)" multiple="false">
+              <span class="file-cta">
+                <span class="file-label">
+                  Choose a file…
+                </span>
+              </span>
+            </label>
+          </div>
+          <div *ngIf="imagePath">
+            <img [src]="'http://localhost:3000' + imagePath" [alt]="form.value.name" />
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="field">
+        <label class="label">Artist Name:</label>
+        <div class="control">
+          <input class="input" type="text" formControlName="artistName" readonly>
+        </div>
+      </div>
+
+
+      <div class="field">
+        <div class="control">
+          <button class="button is-link is-fullwidth" [disabled]="!form.valid" (click)="add()">Add</button>
+        </div>
+      </div>
+
+    </div>
+  </div>

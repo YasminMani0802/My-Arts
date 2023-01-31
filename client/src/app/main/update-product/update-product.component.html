@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="columns is-centered">
+    <div class="box column is-half" [formGroup]="form">
+
+      <h2 class="title has-text-centered">Update your product</h2>
+
+
+      <div class="field">
+        <label class="label">*Name:</label>
+        <div class="control">
+          <input class="input" type="text" formControlName="name">
+          <span *ngIf="name && name.invalid && name.touched" class="help is-danger">This field must include
+            at
+            least 3 characters</span>
+
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Description:</label>
+        <div class="control">
+          <input class="input" type="text" formControlName="description">
+
+        </div>
+
+      </div>
+
+      <div class="field is-grouped">
+        <label class="label">*Price:</label>
+        <div class="control">
+          <input class="input" type="number" formControlName="numberOfPrice">
+          <span *ngIf="numberOfPrice && numberOfPrice.invalid && numberOfPrice.touched" class="help is-danger">Invaild
+            price</span>
+        </div>
+
+        <div class="control">
+          <div class="select">
+            <select formControlName="typeOfPrice">
+              <option>$</option>
+              <option>₪</option>
+              <option> &#x20AC;</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Artist Name:</label>
+        <div class="control">
+          <input class="input" type="text" formControlName="artistName" readonly>
+
+        </div>
+
+      </div>
+
+
+      <div class="field">
+        <div class="control">
+          <button class="button is-link is-fullwidth" [disabled]="!form.valid" (click)="update()">Update</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

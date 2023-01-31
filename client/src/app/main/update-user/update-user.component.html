@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="columns is-centered">
+    <div class="box column is-half" [formGroup]="form">
+      <h2 class="title has-text-centered">Update user</h2>
+
+      <div class="field">
+        <label class="label">*Full Name:</label>
+        <div class="control">
+          <input class="input" type="text" formControlName="fullName">
+          <span *ngIf="fullName && fullName.invalid && fullName.touched" class="help is-danger">This field must include
+            at
+            least 5 characters</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">*Email:</label>
+        <div class="control">
+          <input class="input" type="text" formControlName="email">
+          <span *ngIf="email && email.invalid && email.touched" class="help is-danger">Invaild email</span>
+
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">*Phone:</label>
+        <div class="control">
+          <input class="input" type="tel" formControlName="phone">
+          <span *ngIf="phone && phone.invalid && phone.touched" class="help is-danger">Invaild phone</span>
+
+        </div>
+        <!--  <p class="help is-danger">This phone is invalid</p> -->
+      </div>
+
+
+
+
+      <div class="field">
+        <div class="control">
+          <button class="button is-link is-fullwidth" [disabled]="!form.valid" (click)="update()">Update</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
