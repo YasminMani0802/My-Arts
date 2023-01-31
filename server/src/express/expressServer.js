@@ -30,6 +30,7 @@ const register = require('./handlers/register');
 const authenticateArtist = require('./handlers/middleWares/authenticateArtist');
 const getFullUserByID = require('./handlers/getFullUserByID');
 const saveImage = require('./handlers/saveImage');
+const getThreeProducts = require('./handlers/getThreeProducts');
 
 
 
@@ -65,6 +66,8 @@ server.post('/register', register);
 server.delete('/logout', logout);
 
 server.get('/products', authenticate, getAllProducts);
+server.get('/three-products', getThreeProducts);
+
 server.get('/products/my-products', authenticateArtist, getMyProducts);
 server.get('/products/artist-products', authenticate, getArtistProducts);
 server.post('/products/add', authenticateArtist, addProduct);

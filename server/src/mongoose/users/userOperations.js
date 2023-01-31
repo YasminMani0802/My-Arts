@@ -43,7 +43,7 @@ async function logInUser(email, password) {
         });
         if (!userFromDB)
             return null;
-        const result = bcryptjs.compare(password, userFromDB.password);
+        const result = await bcryptjs.compare(password, userFromDB.password);
         if (result)
             return userFromDB;
 

@@ -14,7 +14,7 @@ async function logIn(req, res) {
         } = validateSignIn(req.body);
         if (error)
             return res.status(400).json({
-                "error.details[0].message: ": error.details[0].message
+                message: error.details[0].message
             });
 
 

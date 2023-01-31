@@ -36,7 +36,6 @@ import { ArtistPageComponent } from './artist-page/artist-page.component';
     MainRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-
   ]
 })
 export class MainModule { }

@@ -8,6 +8,16 @@ async function getAllProducts() {
     }
 }
 
+async function getThreeProducts() {
+    try {
+        const products = await ProductModel.find();
+        const threeProducts = products.slice(0, 3);
+        return threeProducts;
+    } catch {
+        return null;
+    }
+}
+
 async function addProduct(details) {
     try {
         // console.log(details);
@@ -109,5 +119,6 @@ module.exports = {
     deleteOne,
     getProductByID,
     updateProduct,
-    deleteArtistProducts
+    deleteArtistProducts,
+    getThreeProducts
 };

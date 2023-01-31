@@ -1,9 +1,32 @@
 <div class="container">
   <div class="columns is-mobile">
-    <div class="column">
+    <div class="column has-text-centered">
       <h1 class="title is-1">My Arts</h1>
-      <div class="box">
-      </div>
+      <section class="section">
+        <div class="container">
+          <div class="columns has-text-centered products is-centered">
+            <div class="column is-3-desktop is-3-tablet" *ngFor="let product of products">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img [src]="product.imagePath" [alt]='product.name'>
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media-content">
+                    <p class="title is-4">{{product.name}}</p>
+                    <p>{{product.price}}</p>
+                  </div>
+                  <div class="content">{{product.description}}</div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
     </div>
     <app-register class="column is-one-third" *ngIf="!(utility.isLoggedIn$ | async)"></app-register>
 

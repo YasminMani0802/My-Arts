@@ -9,6 +9,7 @@ import { HomeAuthComponent } from './home-auth/home-auth.component';
 
 
 
+
 @NgModule({
   declarations: [LoginComponent, RegisterComponent, HomeAuthComponent],
   imports: [
@@ -16,7 +17,8 @@ import { HomeAuthComponent } from './home-auth/home-auth.component';
     AuthRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+
   ]
 })
 export class AuthModule { }
