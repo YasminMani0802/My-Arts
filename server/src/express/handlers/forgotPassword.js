@@ -8,23 +8,22 @@ async function forgotPassword(req, res) {
         const {
             email
         } = req.body;
-        // console.log("email: ", email);
+
         const user = await UserModel.findOne({
             email
         });
-        // console.log("user: ", user);
+
 
         let tokenDetails = {
             _id: user._id,
             userName: user.fullName,
             isArtist: user.isArtist
         };
-        // console.log("tokenDetails: ", tokenDetails);
 
         const token = jwt.sign(tokenDetails, 'forgotPasswordKey', {
             expiresIn: '15m'
         });
-        // console.log("token: ", token);
+
 
         const resetLink = `http://localhost:4200/auth/reset-password/${user._id}/${token}`;
 
@@ -41,11 +40,11 @@ async function forgotPassword(req, res) {
             subject: 'Reset your password',
             html: `Click <a href=${resetLink}>here<a> to reset your password`
         };
-        // console.log("details: ", details);
+
 
         transporter.sendMail(details, (err, info) => {
             if (err) {
-                // console.log(err);
+
                 return res.status(400).json(err);
             }
             return res.json(info.response);

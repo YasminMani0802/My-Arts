@@ -7,10 +7,10 @@ async function getAccessToResetPassword(req, res) {
         id,
         token,
     } = req.params;
-    // console.log(id, token);
+
     try {
         const verifyToken = jwt.verify(token, 'forgotPasswordKey');
-        // console.log(verifyToken);
+
         if (!verifyToken) {
             return res.status(400).json('You are not allowed to change the password');
         }

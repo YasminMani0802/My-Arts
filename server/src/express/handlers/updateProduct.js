@@ -7,7 +7,7 @@ async function updateProduct(req, res) {
             ...details
         } = req.body;
         const retVal = await productOperations.updateProduct(product_id, details);
-        // console.log("retVal: ", retVal);
+
         if (!retVal)
             return res.status(400).json('Failed');
         return res.json('The update was successful');

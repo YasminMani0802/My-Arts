@@ -10,7 +10,7 @@ async function updateUser(req, res) {
             ...data
         } = req.body;
         const user = await userOperations.updateUser(user_id, data);
-        // console.log("user in updateUser: ", user);
+
 
         if (!user)
             return res.status(400).json('Failed')

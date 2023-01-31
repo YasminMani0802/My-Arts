@@ -5,7 +5,7 @@ async function getFullUserByID(req, res) {
         const user = await userModel.findOne({
             _id: req.query.user_id
         });
-        // console.log(req.query);
+
         const {
             password,
             ...data

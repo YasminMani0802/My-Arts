@@ -12,10 +12,10 @@ async function resetPassword(req, res) {
         password,
         confirmPassword,
     } = req.body;
-    // console.log(password, confirmPassword);
+
     try {
         const verifyToken = jwt.verify(token, 'forgotPasswordKey');
-        // console.log("verifyToken: ", verifyToken);
+
         if (!verifyToken) {
             return res.status(400).json('You are not allowed to change the password');
         }

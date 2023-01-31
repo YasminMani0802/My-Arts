@@ -62,20 +62,18 @@ async function getMyFavourites(user_id) {
         if (!user)
             return null;
         const products = await productOperations.getAllProducts();
-        // console.log("products: ", products);
+
         const favourites = [];
         products.forEach((product, i) => {
-            // console.log("i : ", i);
-            // console.log("product_id: ", product._id.valueOf());
+
             return user.favourites.forEach((id) => {
-                // console.log("userFav: ", id);
+
                 if (id === product._doc._id.valueOf())
                     favourites.push(product);
             })
 
         });
-        // console.log("user favourites: ", user.favourites);
-        // console.log("favourites: ", favourites);
+
         return favourites;
 
     } catch {
@@ -101,12 +99,12 @@ async function addToFavourites(product_id, user_id) {
 }
 
 async function removeFromFavourites(product_id, user_id) {
-    // console.log(product_id, user_id);
+
     try {
         const user = await UserModel.findOne({
             _id: user_id
         });
-        // console.log(user);
+
         if (!user)
             return null;
 
@@ -120,7 +118,7 @@ async function removeFromFavourites(product_id, user_id) {
 }
 
 async function isFavourite(user_id, product_id) {
-    // console.log(product_id, user_id);
+
     try {
         const user = await UserModel.findOne({
             _id: user_id
@@ -139,7 +137,7 @@ async function isFavourite(user_id, product_id) {
 }
 
 async function updateUser(user_id, details) {
-    // console.log("details: ", details);
+
     try {
         const user = await UserModel.findOne({
             _id: user_id
@@ -165,9 +163,7 @@ async function updateUser(user_id, details) {
             }
         });
 
-        // console.log("user.fullName: ", user.fullName);
-        // console.log("updatedUser.fullName: ", updatedUser.fullName);
-        // console.log("updatedProducts: ", updatedProducts);
+
 
         return updatedUser;
 
@@ -179,22 +175,22 @@ async function updateUser(user_id, details) {
 
 async function deleteUser(user_id) {
     try {
-        // console.log("user_id: ", user_id);
+
         const user = await UserModel.deleteOne({
             _id: user_id
         });
-        // console.log("user in 2 function: ", user);
+
         if (user.deletedCount == 0)
             return false;
         const artistProducts = await ProductModel.find({
             user_id
         });
-        // console.log("artistProducts: ", artistProducts);
+
         if (artistProducts === []) {
             const deleteProducts = await ProductModel.deleteMany({
                 user_id
             });
-            // console.log("deleteProducts: ", deleteProducts);
+
             if (deleteProducts.deletedCount == 0)
                 return false;
         }

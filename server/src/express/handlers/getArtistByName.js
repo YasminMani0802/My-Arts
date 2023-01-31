@@ -6,7 +6,7 @@ async function getArtistByName(req, res) {
             fullName: req.query.artist_name,
             isArtist: true
         });
-        // console.log(user);
+
         const {
             password,
             ...data

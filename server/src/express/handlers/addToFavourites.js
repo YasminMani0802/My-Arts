@@ -8,11 +8,11 @@ async function addToFavourites(req, res, next) {
     const {
         user_id
     } = req.query;
-    // console.log("product_id: ", product_id, "user_id: ", user_id);
+
     try {
         const user = await userOperations.addToFavourites(product_id, user_id);
 
-        // console.log(user);
+
         if (!user)
             return res.status(400).json('Add to favourites failed');
         next();

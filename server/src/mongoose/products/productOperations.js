@@ -20,7 +20,7 @@ async function getThreeProducts() {
 
 async function addProduct(details) {
     try {
-        // console.log(details);
+
         return await new ProductModel(details).save();
     } catch {
         return null;
@@ -76,7 +76,7 @@ async function getProductByID(productID) {
 
 async function updateProduct(productID, details) {
     try {
-        // console.log(details, productID);
+
         const product = await ProductModel.findOne({
             _id: productID
         });

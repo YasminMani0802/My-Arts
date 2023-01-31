@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 
 async function authenticate(req, res, next) {
     const cookie = req.cookies['jwt'];
-    // console.log(cookie);
+
     if (!cookie)
         return res.status(401).json('There is no user logged in');
     try {

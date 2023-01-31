@@ -9,7 +9,7 @@ async function deleteUser(req, res) {
         } = req.query;
 
         const user = await userOperations.deleteUser(user_id);
-        // console.log("user in 1 function: ", user);
+
 
 
         if (!user)

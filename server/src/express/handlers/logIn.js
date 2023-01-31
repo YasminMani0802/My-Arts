@@ -8,7 +8,7 @@ async function logIn(req, res) {
             email,
             password,
         } = req.body;
-        // console.log(req.body);
+
         const {
             error
         } = validateSignIn(req.body);
@@ -23,16 +23,16 @@ async function logIn(req, res) {
             return res.status(500).json('Incorrect email or password');
         }
 
-        // console.log(retVal);
+
         const token = jwt.sign({
             _id: retVal._id,
             userName: retVal.fullName,
             isArtist: retVal.isArtist
         }, 'mykey');
-        // console.log(token);
+
         res.cookie('jwt', token, {
             httpOnly: true,
-            maxAge: 24 * 60 * 60 * 1000 // 1 ,
+            maxAge: 24 * 60 * 60 * 1000 // 1 Day,
         });
         res.json({
             authenticated: true,

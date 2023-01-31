@@ -26,7 +26,7 @@ async function addProduct(req, res) {
         user_id,
         ...data
     });
-    // console.log(retVal);
+
     if (retVal === null)
         return res.status(400).json('Adding product failed');
 

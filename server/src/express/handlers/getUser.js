@@ -6,8 +6,6 @@ async function getUser(req, res) {
             _id: req.query.user_id
         });
 
-        // console.log(req.body);
-        // console.log(user);
         const {
             fullName,
             isArtist
