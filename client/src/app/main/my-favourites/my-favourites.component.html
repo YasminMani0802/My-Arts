@@ -1,4 +1,6 @@
-<div class="container">
+<p *ngIf="myFavourites.length == 0" class="has-text-centered">There are no favourites products</p>
+
+<div class="container" *ngIf="myFavourites.length > 0">
   <div class="columns is-centered is-mobile">
     <div class="column is-4-desktop is-6-tablet is-8-mobile">
       <input type="search" [(ngModel)]="searchVal" placeholder="search" class="input">
@@ -8,7 +10,7 @@
 
 
 
-<section class="section">
+<section class="section" *ngIf="myFavourites.length > 0">
   <div class="container">
     <div class="columns has-text-centered is-centered products">
       <div class="column is-3-desktop is-3-tablet" *ngFor="let product of myFavourites | search : searchVal;">
