@@ -4,7 +4,7 @@ const path = require('path');
 async function saveImage(req, res) {
     try {
         const image = req.files.image;
-        console.log(image);
+        // console.log(image);
         const extensionType = path.extname(image.name);
         const allowedTypes = ['.jpg', '.jpeg', '.png'];
         if (!allowedTypes.includes(extensionType)) {
@@ -12,7 +12,7 @@ async function saveImage(req, res) {
         }
         const relativePath = `/images/${image.md5}${extensionType}`;
         const basePath = `${__dirname}/../..${relativePath}`;
-        console.log(__dirname);
+        // console.log(__dirname);
         image.mv(basePath);
         // console.log(basePath);
         res.send({

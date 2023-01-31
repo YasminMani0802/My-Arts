@@ -30,6 +30,7 @@ export class UpdateProductComponent {
       artistName: new FormControl(this.utility.loggedInUserName, [Validators.required]),
     });
   }
+  imagePath: string | null = this.utility.product.imagePath;
 
   len: number;
   numPrice: string;
@@ -62,7 +63,7 @@ export class UpdateProductComponent {
     const price = numberOfPrice + typeOfPrice;
     const product_id = this.utility.product._id;
 
-    const sub = this.http.put('products/update', { name, description, artistName, price, product_id }).subscribe({
+    const sub = this.http.put('products/update', { name, description, artistName, price, product_id, imagePath: this.imagePath }).subscribe({
       next: () => {
         this.router.navigate(['main/my-products']);
         sub.unsubscribe();
@@ -75,6 +76,25 @@ export class UpdateProductComponent {
       }
 
     })
+  }
+
+  async handleFileUpload(event: Event) {
+    const target = event.target as HTMLInputElement;
+    console.log(target.files);
+    if (target.files) {
+      const file = target.files[0];
+      const formData = new FormData();
+      formData.append("image", file);
+
+      const sub = this.http.post<{ imagePath: string }>('save-image', formData).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.imagePath = res.imagePath;
+          sub.unsubscribe();
+        },
+        error: (res) => console.log(res)
+      })
+    }
   }
 }
 

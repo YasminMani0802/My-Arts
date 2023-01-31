@@ -19,7 +19,7 @@ export class AddProductComponent {
       artistName: new FormControl(this.utility.loggedInUserName, [Validators.required]),
     });
   }
-  imagePath: string = "https://bulma.io/images/placeholders/1280x960.png";
+  imagePath: string | null = null;
 
   form: FormGroup;
 
@@ -81,12 +81,6 @@ export class AddProductComponent {
         },
         error: (res) => console.log(res)
       })
-
-      //   const response: any = await fetch('/save-image', {
-      //     method: 'POST',
-      //     body: formData
-      //   })
-      //   this.imagePath = response.imagePath;
 
     }
 
