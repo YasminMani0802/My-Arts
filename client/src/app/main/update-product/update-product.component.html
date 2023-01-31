@@ -12,7 +12,6 @@
           <span *ngIf="name && name.invalid && name.touched" class="help is-danger">This field must include
             at
             least 3 characters</span>
-
         </div>
       </div>
 
@@ -48,10 +47,11 @@
         <label class="label">Artist Name:</label>
         <div class="control">
           <input class="input" type="text" formControlName="artistName" readonly>
-
         </div>
-
       </div>
+
+      <span class="help is-danger" id="errorRes" style="display:none;">Incorrect email or
+        password</span>
 
 
       <div class="field">

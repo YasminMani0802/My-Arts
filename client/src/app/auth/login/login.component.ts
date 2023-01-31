@@ -34,13 +34,15 @@ export class LoginComponent implements OnInit {
   login() {
     const { email, password } = this.form.value;
     const sub = this.utility.login({ email, password }).subscribe({
-      next: (res) => {
-        // console.log(res);
+      next: () => {
         this.router.navigate(['/main']);
         sub.unsubscribe();
       },
-      error: (res) => {
-        this.resError = res.error;
+      error: () => {
+        const errorRes = document.getElementById('errorRes');
+        if (errorRes) {
+          errorRes.style.display = 'block';
+        };
         this.utility.isArtist = null;
       }
     })

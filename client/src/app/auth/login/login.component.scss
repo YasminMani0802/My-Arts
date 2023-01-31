@@ -1,6 +1,12 @@
 .container{
+    margin-top: 50px;
     height: 70vh;
 }
 .body{
- height: 100vh;
+    height: 100vh;
+}
+#errorRes{
+    font-size: 0.9rem;
+    padding: 5px;
+    text-align: center;
 }

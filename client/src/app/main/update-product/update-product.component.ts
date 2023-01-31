@@ -67,7 +67,12 @@ export class UpdateProductComponent {
         this.router.navigate(['main/my-products']);
         sub.unsubscribe();
       },
-      error: (res) => console.log(res.error)
+      error: () => {
+        const errorRes = document.getElementById('errorRes');
+        if (errorRes) {
+          errorRes.style.display = 'block';
+        };
+      }
 
     })
   }

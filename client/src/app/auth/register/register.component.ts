@@ -60,7 +60,12 @@ export class RegisterComponent implements OnInit {
         sub.unsubscribe();
         this.router.navigate(['login']);
       },
-      error: (err) => console.log(err)
+      error: () => {
+        const errorRes = document.getElementById('errorRes');
+        if (errorRes) {
+          errorRes.style.display = 'block';
+        };
+      }
     });
   }
 
