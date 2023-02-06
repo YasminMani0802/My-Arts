@@ -46,24 +46,26 @@ async function getArtistProducts(artistID) {
     }
 }
 
-async function deleteOne(productID) {
+async function deleteOne(product_id, user_id) {
     try {
         const deleted = await ProductModel.deleteOne({
-            _id: productID
+            _id: product_id
         });
         if (!deleted)
             return null;
 
-        return ProductModel.find();
+        return ProductModel.find({
+            user_id: user_id
+        });
     } catch {
         return null;
     }
 }
 
-async function getProductByID(productID) {
+async function getProductByID(product_id) {
     try {
         const product = await ProductModel.findOne({
-            _id: productID
+            _id: product_id
         });
         if (!product)
             return null;
@@ -74,17 +76,17 @@ async function getProductByID(productID) {
     }
 }
 
-async function updateProduct(productID, details) {
+async function updateProduct(product_id, details) {
     try {
 
         const product = await ProductModel.findOne({
-            _id: productID
+            _id: product_id
         });
         if (!product)
             return false;
 
         await ProductModel.updateOne({
-            _id: productID
+            _id: product_id
         }, {
             $set: {
                 ...details

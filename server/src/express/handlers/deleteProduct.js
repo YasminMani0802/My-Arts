@@ -3,10 +3,11 @@ const productOperations = require('../../mongoose/products/productOperations');
 
 async function deleteProduct(req, res) {
     const {
-        product_id
+        product_id,
+        user_id
     } = req.query;
     try {
-        const retVal = await productOperations.deleteOne(product_id);
+        const retVal = await productOperations.deleteOne(product_id, user_id);
         if (!retVal)
             return res.status(400).json('Delete failed');
 
