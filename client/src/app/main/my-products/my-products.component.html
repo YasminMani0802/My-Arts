@@ -1,13 +1,14 @@
-<p *ngIf="myProducts.length == 0" class="has-text-centered">There are no products</p>
-
-<div class="container" *ngIf="myProducts.length > 0">
+<div class="container">
   <div class="columns is-centered is-mobile">
     <div class="column is-4-desktop is-6-tablet is-8-mobile">
-      <input type="search" [(ngModel)]="searchVal" placeholder="search" class="input">
+
     </div>
-    <div class="column is-4-desktop is-6-tablet is-8-mobile is-one-quarter">
-      <button *ngIf="(utility .isLoggedIn$ | async) && (utility.isArtist)" routerLink="add"
-        class="button is-fullwidth">Add Product
+    <div class="column is-4-desktop is-6-tablet is-8-mobile">
+      <input type="search" [(ngModel)]="searchVal" placeholder="search" class="input" *ngIf="myProducts.length > 0">
+    </div>
+    <div class="column is-4-desktop is-6-tablet is-8-mobile is-one-quarter"
+      *ngIf="(utility .isLoggedIn$ | async) && (utility.isArtist)">
+      <button routerLink="add" class="button is-fullwidth">Add Product
       </button>
 
     </div>
@@ -16,9 +17,10 @@
 </div>
 
 
-<section class="section" *ngIf="myProducts.length > 0">
+<section class="section">
   <div class="container">
-    <div class="columns has-text-centered is-centered products">
+    <p *ngIf="myProducts.length == 0" class="has-text-centered">There are no products</p>
+    <div class="columns has-text-centered is-centered products" *ngIf="myProducts.length > 0">
       <div class="column is-3-desktop is-3-tablet" *ngFor="let product of myProducts | search : searchVal;">
         <div class="card">
           <div class="card-image">
