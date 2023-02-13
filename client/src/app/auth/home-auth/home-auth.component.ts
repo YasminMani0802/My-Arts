@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpService } from 'src/app/main/http.service';
 import { Product } from 'src/app/main/product.interface';
-import { UtilityService } from 'src/app/main/utility.service';
+import { UtilityService } from 'src/app/utility.service';
 
 @Component({
   selector: 'app-home-auth',

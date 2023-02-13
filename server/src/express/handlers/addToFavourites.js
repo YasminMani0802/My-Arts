@@ -14,10 +14,12 @@ async function addToFavourites(req, res, next) {
 
 
         if (!user)
-            return res.status(400).json('Add to favourites failed');
+            return res.status(422).json('Add to favourites failed');
         next();
-    } catch {
-        return res.status(400).json('Add to favourites failed!!!!');
+    } catch (error) {
+        return res.status(400).json({
+            error: error.message
+        });
     }
 }
 

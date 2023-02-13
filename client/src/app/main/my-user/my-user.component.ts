@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/main/http.service';
-import { UtilityService } from 'src/app/main/utility.service';
+import { UtilityService } from 'src/app/utility.service';
 
 @Component({
   selector: 'app-my-user',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/main/http.service';
-import { UtilityService } from 'src/app/main/utility.service';
+import { UtilityService } from 'src/app/utility.service';
 import { Product } from '../product.interface';
 
 @Component({
@@ -10,7 +10,7 @@ import { Product } from '../product.interface';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
-  products: Product[];
+  products: Product[] = [];
   searchVal: string = '';
   constructor(private http: HttpService, public utility: UtilityService, private router: Router) { }
 
@@ -20,7 +20,7 @@ export class ProductsComponent {
         products.forEach(product => {
           const secSub = this.http.get<{ isFavourite: boolean }>(`products/is-favourite?product_id=${product._id}`).subscribe({
             next: (res) => {
-              console.log(res);
+              // console.log(res);
 
               product.isFavourite = res.isFavourite;
               secSub.unsubscribe();

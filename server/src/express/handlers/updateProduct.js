@@ -9,11 +9,14 @@ async function updateProduct(req, res) {
         const retVal = await productOperations.updateProduct(product_id, details);
 
         if (!retVal)
-            return res.status(400).json('Failed');
-        return res.json('The update was successful');
-    } catch {
-        return res.status(400).json('Failed!');
+            return res.status(500).json('Failed to update product');
 
+        return res.json('The update was successful');
+
+    } catch (error) {
+        return res.status(400).json({
+            error: error.message
+        });
     }
 }
 

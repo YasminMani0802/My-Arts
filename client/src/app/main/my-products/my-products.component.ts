@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { config } from 'rxjs';
 import { HttpService } from 'src/app/main/http.service';
-import { UtilityService } from 'src/app/main/utility.service';
+import { UtilityService } from 'src/app/utility.service';
 import { Product } from '../product.interface';
 
 @Component({
@@ -11,7 +11,7 @@ import { Product } from '../product.interface';
   styleUrls: ['./my-products.component.scss']
 })
 export class MyProductsComponent {
-  myProducts: Product[];
+  myProducts: Product[] = [];
   searchVal: string = '';
 
   constructor(private http: HttpService, public utility: UtilityService, private router: Router) { }

@@ -13,10 +13,13 @@ async function updateUser(req, res) {
 
 
         if (!user)
-            return res.status(400).json('Failed')
+            return res.status(500).json('Failed to update user');
+
         return res.json(user);
-    } catch {
-        return res.status(400).json('Failed')
+    } catch (error) {
+        return res.status(400).json({
+            error: error.message
+        });
     }
 }
 

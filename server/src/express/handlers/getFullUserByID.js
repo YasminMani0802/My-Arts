@@ -6,13 +6,18 @@ async function getFullUserByID(req, res) {
             _id: req.query.user_id
         });
 
+        if (!user)
+            return res.status(404).end();
+
         const {
             password,
             ...data
         } = user._doc;
         res.json(data);
-    } catch {
-        res.status(401).json('Could not find the user');
+    } catch (error) {
+        return res.status(400).json({
+            error: error.message
+        });
     }
 }
 

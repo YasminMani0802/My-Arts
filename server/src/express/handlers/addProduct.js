@@ -3,34 +3,41 @@ const productOperations = require('../../mongoose/products/productOperations');
 
 
 async function addProduct(req, res) {
-    const {
-        user_id
-    } = req.query;
-    const {
-        ...data
-    } = req.body;
+    try {
+        const {
+            user_id
+        } = req.query;
+        const {
+            ...data
+        } = req.body;
 
-    const {
-        error
-    } = validateProduct({
-        user_id,
-        ...data
-    });
-    if (error)
-        return res.status(400).json({
-            "error.details[0].message: ": error.details[0].message
+        const {
+            error
+        } = validateProduct({
+            user_id,
+            ...data
+        });
+        if (error)
+            return res.status(400).json({
+                "error": error.details[0].message
+            });
+
+
+        const retVal = await productOperations.addProduct({
+            user_id,
+            ...data
         });
 
+        if (retVal === null)
+            return res.status(500).json('Adding product failed');
 
-    const retVal = await productOperations.addProduct({
-        user_id,
-        ...data
-    });
+        return res.json('Adding product succeeded');
 
-    if (retVal === null)
-        return res.status(400).json('Adding product failed');
-
-    return res.json('Adding product succeeded');
+    } catch (error) {
+        return res.status(400).json({
+            error: error.message
+        });
+    }
 }
 
 module.exports = addProduct;

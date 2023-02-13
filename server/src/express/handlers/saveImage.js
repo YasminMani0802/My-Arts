@@ -18,9 +18,10 @@ async function saveImage(req, res) {
         res.send({
             imagePath: relativePath
         });
-    } catch (e) {
-
-        return res.status(422).end();
+    } catch (error) {
+        return res.status(422).json({
+            error: error.message
+        });
     }
 }
 

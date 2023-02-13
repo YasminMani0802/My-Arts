@@ -20,7 +20,7 @@ async function logIn(req, res) {
 
         const retVal = await userOperations.logInUser(email, password);
         if (!retVal) {
-            return res.status(500).json('Incorrect email or password');
+            return res.status(401).json('Incorrect email or password');
         }
 
 

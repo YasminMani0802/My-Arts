@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/main/http.service';
-import { UtilityService } from 'src/app/main/utility.service';
+import { UtilityService } from 'src/app/utility.service';
 
 @Component({
   selector: 'app-add-product',

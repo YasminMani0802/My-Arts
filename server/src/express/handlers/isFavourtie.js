@@ -10,7 +10,7 @@ async function isFavourite(req, res) {
         const isFavourite = await userOperations.isFavourite(user_id, product_id);
 
         if (isFavourite === null)
-            return res.status(400).json('Failed');
+            return res.status(500).json('Failed');
 
         if (isFavourite === false)
             return res.json({
@@ -19,9 +19,10 @@ async function isFavourite(req, res) {
         return res.json({
             isFavourite: true
         });
-    } catch {
-        return res.status(400).json('Failed!');
-
+    } catch (error) {
+        return res.status(400).json({
+            error: error.message
+        });
     }
 }
 

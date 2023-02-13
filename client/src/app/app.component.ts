@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-import { UtilityService } from './main/utility.service';
+import { UtilityService } from './utility.service';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,9 @@ export class AppComponent {
 
 
   constructor(public utility: UtilityService) {
+
+  }
+  ngOnInit() {
     this.isLoggedIn$ = this.utility.isLoggedIn$;
 
     const sub = this.utility.checkAuth().subscribe({

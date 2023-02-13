@@ -6,10 +6,14 @@ async function getMyFavourites(req, res) {
             user_id
         } = req.query;
         const favourites = await userOperations.getMyFavourites(user_id);
+        if (!favourites)
+            return res.status(500).json("Could not find favourites");
 
         return res.json(favourites);
-    } catch {
-        return res.status(400).json('failed to load favourites');
+    } catch (error) {
+        return res.status(400).json({
+            error: error.message
+        });
     }
 
 }

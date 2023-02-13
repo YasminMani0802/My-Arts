@@ -6,22 +6,21 @@ import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 
 
-import { NavbarComponent } from './main/navbar/navbar.component';
-import { FooterComponent } from './main/footer/footer.component';
+
+import { SharedModule } from './shared/shared.module';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -9,11 +9,13 @@ async function deleteProduct(req, res) {
     try {
         const retVal = await productOperations.deleteOne(product_id, user_id);
         if (!retVal)
-            return res.status(400).json('Delete failed');
+            return res.status(500).json('Delete failed');
 
         return res.json(retVal);
-    } catch {
-        return null;
+    } catch (error) {
+        return res.status(400).json({
+            error: error.message
+        });
     }
 }
 

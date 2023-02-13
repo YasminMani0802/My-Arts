@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/main/http.service';
-import { UtilityService } from 'src/app/main/utility.service';
+import { UtilityService } from 'src/app/utility.service';
 
 @Component({
   selector: 'app-update-product',
@@ -19,12 +19,12 @@ export class UpdateProductComponent {
     this.totalPrice = this.utility.product.price;
     this.numPrice = this.totalPrice.slice(0, this.len - 1);
     this.typePrice = this.totalPrice.slice(this.len - 1);
-    console.log("this.numPrice: ", this.numPrice);
-    console.log("this.typePrice: ", this.typePrice);
+    // console.log("this.numPrice: ", this.numPrice);
+    // console.log("this.typePrice: ", this.typePrice);
 
     this.form = new FormGroup({
       name: new FormControl(this.utility.product.name, [Validators.required, Validators.minLength(3)]),
-      description: new FormControl(this.utility.product.description),
+      description: new FormControl(this.utility.product.description, [Validators.minLength(0)]),
       numberOfPrice: new FormControl(this.numPrice, [Validators.required, Validators.min(1)]),
       typeOfPrice: new FormControl(this.typePrice, [Validators.required]),
       artistName: new FormControl(this.utility.loggedInUserName, [Validators.required]),

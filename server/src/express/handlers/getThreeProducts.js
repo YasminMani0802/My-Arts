@@ -1,8 +1,14 @@
 const productOperations = require('../../mongoose/products/productOperations');
 
 async function getThreeProducts(req, res) {
-    const products = await productOperations.getThreeProducts();
-    return res.json(products);
+    try {
+        const products = await productOperations.getThreeProducts();
+        return res.json(products);
+    } catch (error) {
+        return res.status(400).json({
+            error: error.message
+        });
+    }
 }
 
 module.exports = getThreeProducts;

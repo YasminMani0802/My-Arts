@@ -13,7 +13,7 @@ async function deleteUser(req, res) {
 
 
         if (!user)
-            return res.status(400).json('Failed');
+            return res.status(500).json('Failed to delete product');
 
         const deletedProducts = await productOperations.deleteArtistProducts(user_id);
         if (deletedProducts) {
@@ -27,10 +27,12 @@ async function deleteUser(req, res) {
                 userName: null
             });
         } else {
-            res.status(400).json('Failed');
+            res.status(500).json('Failed');
         }
-    } catch {
-        return res.status(400).json('Failed!')
+    } catch (error) {
+        return res.status(400).json({
+            error: error.message
+        })
     }
 
 }
