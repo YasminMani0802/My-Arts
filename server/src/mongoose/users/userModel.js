@@ -25,6 +25,10 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         required: true,
     },
+    imagePath: {
+        type: String,
+
+    },
     favourites: {
         type: Array
     }

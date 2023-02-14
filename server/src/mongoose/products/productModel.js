@@ -23,6 +23,10 @@ const productSchema = mongoose.Schema({
         type: String,
 
     },
+    userImage: {
+        type: String,
+
+    },
     artistName: {
         type: String
     }

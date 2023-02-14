@@ -27,7 +27,7 @@ export class UpdateProductComponent {
       description: new FormControl(this.utility.product.description, [Validators.minLength(0)]),
       numberOfPrice: new FormControl(this.numPrice, [Validators.required, Validators.min(1)]),
       typeOfPrice: new FormControl(this.typePrice, [Validators.required]),
-      artistName: new FormControl(this.utility.loggedInUserName, [Validators.required]),
+      artistName: new FormControl(this.utility.loggedInUser.name, [Validators.required]),
     });
   }
   imagePath: string | null = this.utility.product.imagePath;

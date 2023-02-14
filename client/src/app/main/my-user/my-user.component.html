@@ -3,7 +3,12 @@
   <div class="columns is-centered">
 
     <div class="column card box is-half">
-
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img class="userImage" [src]="'http://localhost:3000' + user.imagePath" [alt]='user.fullName'
+            style=" border-radius: 50%;">
+        </figure>
+      </div>
       <p class="title has-text-centered is-full-width">
         {{user.fullName}}
       </p>
@@ -11,7 +16,7 @@
 
 
       <div class="card-content">
-        <div class="content">
+        <div class="content has-text-centered">
           <p>{{user.email}}</p>
           <p>{{user.phone}}</p>
 

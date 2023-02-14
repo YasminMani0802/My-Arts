@@ -10,6 +10,11 @@ import { UtilityService } from '../../utility.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  constructor(private http: HttpService, private router: Router, private utility: UtilityService) { }
+
+  ngOnInit(): void {
+  }
+  imagePath: string | null = null;
 
   regexPatterns: any = [
     { phone: /^\+?[0-9]{3}[ -]?[0-9]{6,12}$/ },
@@ -54,7 +59,7 @@ export class RegisterComponent implements OnInit {
 
 
   register() {
-    const sub = this.http.post('register', { ...this.form.value }).subscribe({
+    const sub = this.http.post('register', { ...this.form.value, imagePath: this.imagePath }).subscribe({
       next: () => {
         alert('ההרשמה בוצעה בהצלחה!');
         sub.unsubscribe();
@@ -69,9 +74,26 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  constructor(private http: HttpService, private router: Router, private utility: UtilityService) { }
+  async handleFileUpload(event: Event) {
+    const target = event.target as HTMLInputElement;
+    console.log(target.files);
+    if (target.files) {
+      const file = target.files[0];
+      const formData = new FormData();
+      formData.append("image", file);
 
-  ngOnInit(): void {
+      const sub = this.http.post<{ imagePath: string }>('save-user-image', formData).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.imagePath = res.imagePath;
+          sub.unsubscribe();
+        },
+        error: (res) => console.log(res)
+      })
+
+    }
+
   }
+
 
 }

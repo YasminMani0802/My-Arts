@@ -12,7 +12,8 @@ const schema = joi.object({
     email: joi.string().required().email(),
     phone: joi.string().required().min(9).max(12).pattern(new RegExp(regexPatterns[0].phone)),
     password: joi.string().required().min(8).pattern(new RegExp(regexPatterns[1].password)),
-    isArtist: joi.boolean()
+    isArtist: joi.boolean(),
+    imagePath: joi.string(),
 })
 
 

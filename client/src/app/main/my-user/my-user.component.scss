@@ -1,0 +1,15 @@
+.container{
+    margin-top: 5%;
+    .column{
+        box-shadow: none;
+
+        .card-image{
+            width: 20vw;
+            height: auto;
+            margin: 0 auto;
+        }
+        .title{
+            margin-top: 5%;
+        }
+    }
+}

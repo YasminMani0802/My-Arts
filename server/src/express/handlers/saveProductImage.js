@@ -1,7 +1,7 @@
 const path = require('path');
 
 
-async function saveImage(req, res) {
+async function saveProductImage(req, res) {
     try {
         const image = req.files.image;
 
@@ -25,4 +25,4 @@ async function saveImage(req, res) {
     }
 }
 
-module.exports = saveImage;
+module.exports = saveProductImage;

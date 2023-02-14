@@ -16,7 +16,7 @@ export class AddProductComponent {
       description: new FormControl(''),
       numberOfPrice: new FormControl('', [Validators.required, Validators.min(1)]),
       typeOfPrice: new FormControl('$', [Validators.required]),
-      artistName: new FormControl(this.utility.loggedInUserName, [Validators.required]),
+      artistName: new FormControl(this.utility.loggedInUser.name, [Validators.required]),
     });
   }
   imagePath: string | null = null;
@@ -46,9 +46,10 @@ export class AddProductComponent {
   add() {
     const { name, description, numberOfPrice, typeOfPrice, artistName } = this.form.value;
     const price = numberOfPrice + typeOfPrice;
+    const userImage = this.utility.loggedInUser.userImage;
 
     const sub = this.http.post('products/add', {
-      name, description, artistName, price, imagePath: this.imagePath
+      name, description, artistName, price, imagePath: this.imagePath, userImage
     }).subscribe({
       next: () => {
         this.router.navigate(['main/my-products']);
@@ -73,7 +74,7 @@ export class AddProductComponent {
       const formData = new FormData();
       formData.append("image", file);
 
-      const sub = this.http.post<{ imagePath: string }>('save-image', formData).subscribe({
+      const sub = this.http.post<{ imagePath: string }>('save-product-image', formData).subscribe({
         next: (res) => {
           console.log(res);
           this.imagePath = res.imagePath;

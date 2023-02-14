@@ -29,8 +29,9 @@ const resetPassword = require('./handlers/resetPassword');
 const register = require('./handlers/register');
 const authenticateArtist = require('./handlers/middleWares/authenticateArtist');
 const getFullUserByID = require('./handlers/getFullUserByID');
-const saveImage = require('./handlers/saveImage');
 const getThreeProducts = require('./handlers/getThreeProducts');
+const saveProductImage = require('./handlers/saveProductImage');
+const saveUserImage = require('./handlers/saveUserImage');
 
 
 
@@ -78,7 +79,8 @@ server.post('/products/add-to-favourites', authenticate, addToFavourites, getMyF
 server.delete('/products/remove-from-favourites', authenticate, removeFromFavourites, getMyFavourites);
 server.get('/products/get-product-by-id', authenticate, getProductByID);
 server.get('/products/is-favourite', authenticate, isFavourite);
-server.post('/save-image', authenticateArtist, saveImage);
+server.post('/save-product-image', authenticateArtist, saveProductImage);
+server.post('/save-user-image', saveUserImage);
 server.use('/images', express.static('src/images'));
 
 

@@ -31,6 +31,26 @@
         </div>
       </div>
 
+      <div class="field">
+        <label class="label">*Image:</label>
+        <div class="control">
+          <div class="file">
+            <label class="file-label">
+              <input class="file-input" type="file" (change)="handleFileUpload($event)" multiple="false">
+              <span class="file-cta">
+                <span class="file-label">
+                  Choose a file…
+                </span>
+              </span>
+            </label>
+          </div>
+          <div *ngIf="userImage">
+            <img [src]="'http://localhost:3000' + userImage" [alt]="form.value.name" />
+
+          </div>
+        </div>
+      </div>
+
       <span class="help is-danger" id="errorRes" style="display:none;">Failed to update user</span>
 
 

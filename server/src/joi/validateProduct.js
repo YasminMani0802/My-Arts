@@ -5,8 +5,9 @@ const schema = joi.object({
     name: joi.string().required().min(3),
     description: joi.string().min(0),
     price: joi.string().required(),
-    imagePath: joi.string(),
-    artistName: joi.string().required()
+    imagePath: joi.string().required(),
+    artistName: joi.string().required(),
+    userImage: joi.string()
 });
 
 function validateProduct(details) {

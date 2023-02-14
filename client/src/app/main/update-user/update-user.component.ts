@@ -11,7 +11,7 @@ import { UtilityService } from 'src/app/utility.service';
 })
 export class UpdateUserComponent {
 
-  constructor(private http: HttpService, private router: Router) {
+  constructor(private http: HttpService, private router: Router, private utility: UtilityService) {
   }
 
   ngOnInit() {
@@ -36,6 +36,8 @@ export class UpdateUserComponent {
 
   form: FormGroup;
   user: any;
+  userImage: string | null = this.utility.loggedInUser.userImage;
+
 
 
 
@@ -66,6 +68,28 @@ export class UpdateUserComponent {
       }
 
     });
+  }
+
+
+  async handleFileUpload(event: Event) {
+    const target = event.target as HTMLInputElement;
+    console.log(target.files);
+    if (target.files) {
+      const file = target.files[0];
+      const formData = new FormData();
+      formData.append("image", file);
+
+      const sub = this.http.post<{ imagePath: string }>('save-user-image', formData).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.userImage = res.imagePath;
+          sub.unsubscribe();
+        },
+        error: (res) => console.log(res)
+      })
+
+    }
+
   }
 
   ngOnDestroy() {

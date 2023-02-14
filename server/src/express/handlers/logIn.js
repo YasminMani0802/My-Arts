@@ -37,7 +37,8 @@ async function logIn(req, res) {
         res.json({
             authenticated: true,
             userName: retVal.fullName,
-            isArtist: retVal.isArtist
+            isArtist: retVal.isArtist,
+            userImage: retVal.imagePath
         });
     } catch {
         return res.status(400).json({

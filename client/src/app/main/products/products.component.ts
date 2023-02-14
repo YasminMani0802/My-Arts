@@ -28,6 +28,7 @@ export class ProductsComponent {
             error: (res) => console.log(res.error)
           })
         })
+        sub.unsubscribe();
         this.products = products;
       },
       error: (res) => console.log(res.error)
