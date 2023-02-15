@@ -55,7 +55,7 @@ export class UpdateUserComponent {
 
 
   update() {
-    const sub = this.http.put('update-user', this.form.value).subscribe({
+    const sub = this.http.put('update-user', { ...this.form.value, imagePath: this.userImage }).subscribe({
       next: () => {
         this.router.navigate(['main/my-user']);
         sub.unsubscribe();

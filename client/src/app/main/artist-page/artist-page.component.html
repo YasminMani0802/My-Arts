@@ -1,74 +1,83 @@
 <div class="container">
-  <div class="columns is-centered">
-    <div class="column card box is-half">
-      <div class="container has-text-centered">
-        <p class="title has-text-centered is-full-width">
-          {{user.fullName}}
-        </p>
+  <div class="columns">
+    <div class="container column is-one-third">
+      <div class="columns is-centered">
 
-        <div class="card-content">
-          <div class="content">
-            <p>{{user.email}}</p>
-            <p>{{user.phone}}</p>
-
+        <div class="column card box">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img class="userImage" [src]="'http://localhost:3000' + user.imagePath" [alt]='user.fullName'
+                style=" border-radius: 50%;">
+            </figure>
           </div>
+
+          <p class="title has-text-centered is-full-width">
+            {{user.fullName}}
+          </p>
+
+          <div class="card-content">
+            <div class="content has-text-centered">
+              <p>{{user.email}}</p>
+              <p>{{user.phone}}</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<br><br><br><br>
 
-<div class="container has-text-centered" *ngIf="artistProducts.length > 0">
-  <h2 class="title">Products</h2>
 
-  <div class="container">
-    <div class="columns is-centered is-mobile">
-      <div class="column is-4-desktop is-6-tablet is-8-mobile">
-        <input type="search" [(ngModel)]="searchVal" placeholder="search" class="input">
+    <div class="container has-text-centered column" *ngIf="artistProducts.length > 0">
+
+      <div class="container">
+        <div class="columns is-centered is-mobile">
+          <div class="column is-6-desktop is-6-tablet is-8-mobile">
+            <input type="search" [(ngModel)]="searchVal" placeholder="search" class="input">
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
 
-  <section class="section">
-    <div class="container">
-      <div class="columns has-text-centered is-centered products">
-        <div class="column is-3-desktop is-3-tablet" *ngFor="let product of artistProducts | search : searchVal;">
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img [src]="'http://localhost:3000' + product.imagePath" [alt]='product.name'>
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4">{{product.name}}</p>
-                  <p>{{product.price}}</p>
-
+      <section class="section">
+        <div class="container">
+          <div class="columns has-text-centered is-centered products">
+            <div class="column is-5-desktop is-3-tablet" *ngFor="let product of artistProducts | search : searchVal;">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img [src]="'http://localhost:3000' + product.imagePath" [alt]='product.name'>
+                  </figure>
                 </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">{{product.name}}</p>
+                      <p>{{product.price}}</p>
+
+                    </div>
+                  </div>
+
+                  <div class="content">{{product.description}}</div>
+                </div>
+
+                <div class="card">
+                  <footer class="card-footer">
+                    <a *ngIf="!product.isFavourite" (click)="addToFavourites(product._id)" class="card-footer-item">Add
+                      to
+                      my favourites</a>
+                    <a *ngIf="product.isFavourite" (click)="removeFromFavourites(product._id)"
+                      class="card-footer-item">Remove from my
+                      favourites</a>
+                  </footer>
+                </div>
+
               </div>
-
-              <div class="content">{{product.description}}</div>
             </div>
-
-            <div class="card">
-              <footer class="card-footer">
-                <a *ngIf="!product.isFavourite" (click)="addToFavourites(product._id)" class="card-footer-item">Add
-                  to
-                  my favourites</a>
-                <a *ngIf="product.isFavourite" (click)="removeFromFavourites(product._id)"
-                  class="card-footer-item">Remove from my
-                  favourites</a>
-              </footer>
-            </div>
-
           </div>
         </div>
-      </div>
-    </div>
 
-  </section>
+      </section>
+    </div>
+  </div>
 </div>

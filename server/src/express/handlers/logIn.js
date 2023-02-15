@@ -22,6 +22,7 @@ async function logIn(req, res) {
         if (!retVal) {
             return res.status(401).json('Incorrect email or password');
         }
+        console.log("retVal: ", retVal);
 
 
         const token = jwt.sign({

@@ -12,14 +12,27 @@
                     <img [src]="'http://localhost:3000' + product.imagePath" [alt]='product.name'>
                   </figure>
                 </div>
+
                 <div class="card-content">
-                  <div class="media-content">
+                  <div class="content">
                     <p class="title is-4">{{product.name}}</p>
                     <p>{{product.price}}</p>
-                  </div>
-                  <div class="content">{{product.description}}</div>
-                </div>
 
+                    <div class="media columns is-vcentered">
+                      <div class="media-left column is-one-quarter" style="padding-right: 0;">
+                        <figure class="image is-48x48" style="height:auto;">
+                          <img [src]="'http://localhost:3000' + product.userImage" [alt]='product.artistName'
+                            style=" border-radius: 50%; display: block;">
+                        </figure>
+                      </div>
+                      <div class="media-content column" style="padding-left: 0;">
+                        <a class="title is-6" (click)="goToArtistPage(product.artistName)">{{product.artistName}}</a>
+                      </div>
+                    </div>
+
+                    <p>{{product.description}}</p>
+                  </div>
+                </div>
 
               </div>
             </div>

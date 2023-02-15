@@ -159,7 +159,8 @@ async function updateUser(user_id, details) {
             artistName: user.fullName
         }, {
             $set: {
-                artistName: updatedUser.fullName
+                artistName: updatedUser.fullName,
+                userImage: updatedUser.imagePath
             }
         });
 

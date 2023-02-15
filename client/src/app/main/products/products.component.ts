@@ -18,9 +18,10 @@ export class ProductsComponent {
     const sub = this.http.get<Product[]>('products').subscribe({
       next: (products) => {
         products.forEach(product => {
+          console.log("product: ", product);
+
           const secSub = this.http.get<{ isFavourite: boolean }>(`products/is-favourite?product_id=${product._id}`).subscribe({
             next: (res) => {
-              // console.log(res);
 
               product.isFavourite = res.isFavourite;
               secSub.unsubscribe();

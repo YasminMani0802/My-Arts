@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
 })
 export class UtilityService {
   isLoggedIn$ = new BehaviorSubject<any>(null);
-  loggedInUserName: string = 'guest';
+  loggedInUser: { name: string, userImage: string };
   isArtist: boolean | null = null;
   product: Product;
 
@@ -27,9 +27,9 @@ export class UtilityService {
   login(credentials: any) {
 
     return this.http.post<any>(`login`, { ...credentials }).pipe(
-      tap(({ authenticated, userName, isArtist }) => {
+      tap(({ authenticated, userName, isArtist, userImage }) => {
         this.isLoggedIn$.next(authenticated);
-        this.loggedInUserName = userName;
+        this.loggedInUser = { name: userName, userImage: userImage };
         this.isArtist = isArtist;
 
 
@@ -40,9 +40,13 @@ export class UtilityService {
 
   checkAuth() {
     return this.http.get<any>('user').pipe(
-      tap(({ authenticated, userName, isArtist }) => {
+      tap(({ authenticated, userName, isArtist, userImage }) => {
+        console.log("userImage: ", userImage);
+
         this.isArtist = isArtist;
-        this.loggedInUserName = userName;
+        this.loggedInUser = { name: userName, userImage };
+        console.log("this.loggedInUser: ", this.loggedInUser);
+
         this.isLoggedIn$.next(authenticated);
         if (this.isLoggedIn$.value === false) {
           this.router.navigate(['/'])
@@ -57,7 +61,6 @@ export class UtilityService {
     return this.http.delete<any>(`logout`).pipe(
       tap(() => {
         this.isLoggedIn$.next(false);
-        this.loggedInUserName = 'guest';
         this.isArtist = null;
         // console.log(this.isLoggedIn$.value);
         // console.log(this.loggedInUserName);

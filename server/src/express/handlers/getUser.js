@@ -8,13 +8,16 @@ async function getUser(req, res) {
 
         const {
             fullName,
-            isArtist
+            isArtist,
+            imagePath
         } = user._doc;
 
         res.json({
             authenticated: true,
             userName: fullName,
-            isArtist
+            isArtist,
+            userImage: imagePath
+
         });
     } catch {
         res.status(401).json({

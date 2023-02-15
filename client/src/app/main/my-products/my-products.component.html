@@ -28,15 +28,13 @@
               <img [src]="'http://localhost:3000' + product.imagePath" [alt]='product.name'>
             </figure>
           </div>
+
           <div class="card-content">
-            <div class="media">
-              <div class="media-content">
-                <p class="title is-4">{{product.name}}</p>
-                <p>{{product.price}}</p>
-                <a class="subtitle is-6" (click)="goToArtistPage(product.artistName)">{{product.artistName}}</a>
-              </div>
+            <div class="content">
+              <p class="title is-4">{{product.name}}</p>
+              <p>{{product.price}}</p>
+              <p>{{product.description}}</p>
             </div>
-            <div class="content">{{product.description}}</div>
           </div>
 
 

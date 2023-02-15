@@ -9,9 +9,13 @@ import { UtilityService } from 'src/app/utility.service';
   styleUrls: ['./my-user.component.scss']
 })
 export class MyUserComponent {
+  user: any;
   constructor(private http: HttpService, private router: Router, private utility: UtilityService) {
+
     const sub = this.http.get('full-user-by-id').subscribe({
       next: (details) => {
+        console.log(details);
+
         this.user = details;
         sub.unsubscribe();
       },
@@ -19,8 +23,8 @@ export class MyUserComponent {
 
     })
   }
-  user: any;
   ngOnInit() {
+    console.log(this.user);
 
   }
 

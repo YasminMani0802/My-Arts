@@ -59,7 +59,11 @@ export class RegisterComponent implements OnInit {
 
 
   register() {
-    const sub = this.http.post('register', { ...this.form.value, imagePath: this.imagePath }).subscribe({
+    const body = { ...this.form.value };
+    if (this.imagePath) {
+      body.imagePath = this.imagePath;
+    }
+    const sub = this.http.post('register', body).subscribe({
       next: () => {
         alert('ההרשמה בוצעה בהצלחה!');
         sub.unsubscribe();

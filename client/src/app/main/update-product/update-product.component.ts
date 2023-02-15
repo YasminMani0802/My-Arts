@@ -62,8 +62,9 @@ export class UpdateProductComponent {
     const { name, description, numberOfPrice, typeOfPrice, artistName } = this.form.value;
     const price = numberOfPrice + typeOfPrice;
     const product_id = this.utility.product._id;
+    const userImage = this.utility.loggedInUser.userImage;
 
-    const sub = this.http.put('products/update', { name, description, artistName, price, product_id, imagePath: this.imagePath }).subscribe({
+    const sub = this.http.put('products/update', { name, description, artistName, price, product_id, imagePath: this.imagePath, userImage }).subscribe({
       next: () => {
         this.router.navigate(['main/my-products']);
         sub.unsubscribe();

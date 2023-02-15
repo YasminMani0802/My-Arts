@@ -19,7 +19,9 @@ export class AppComponent {
     this.isLoggedIn$ = this.utility.isLoggedIn$;
 
     const sub = this.utility.checkAuth().subscribe({
-      next: () => {
+      next: (data) => {
+        // console.log("data from checkAuth: ", data);
+
         console.log('checkAuth: ');
         console.log([this.utility.isArtist, this.utility.isLoggedIn$.value, this.utility.loggedInUser]);
         sub.unsubscribe();

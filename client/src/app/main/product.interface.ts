@@ -6,5 +6,6 @@ export interface Product {
     artistName: string,
     imagePath: string,
     _id: string,
-    isFavourite?: boolean
+    isFavourite?: boolean,
+    userImage: string
 }
