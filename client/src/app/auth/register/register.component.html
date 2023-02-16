@@ -34,7 +34,10 @@
     <label class="label">*Password:</label>
     <div class="control">
       <input class="input" type="password" formControlName="password">
-      <span *ngIf="password && password.invalid && password.touched" class="help is-danger">Invaild password</span>
+      <span *ngIf="password && password.invalid && password.touched" class="help is-danger">Password must contain at
+        least 8
+        characters, including at least one upper-case letter, a lower-case letter, four numbers and on a special sign
+        (!@#$%^&*-_*)</span>
     </div>
 
   </div>

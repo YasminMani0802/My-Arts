@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" *ngIf="(utility.isLoggedIn$ | async)">
   <div class="columns is-mobile">
     <div class="column has-text-centered">
-      <h1 class="title is-1">My Arts</h1>
+      <h1 class="title is-1" style="margin-bottom: 0;">My Arts</h1>
       <section class="section">
         <div class="container">
           <div class="columns has-text-centered products is-centered">
@@ -20,9 +20,61 @@
 
                     <div class="media columns is-vcentered">
                       <div class="media-left column is-one-quarter" style="padding-right: 0;">
-                        <figure class="image is-48x48" style="height:auto;">
-                          <img [src]="'http://localhost:3000' + product.userImage" [alt]='product.artistName'
-                            style=" border-radius: 50%; display: block;">
+                        <figure class="image is-48x48" style="height:auto;"
+                          (click)="goToArtistPage(product.artistName)">
+                          <a (click)="goToArtistPage(product.artistName)">
+                            <img [src]="'http://localhost:3000' + product.userImage" [alt]='product.artistName'
+                              style=" border-radius: 50%; display: block;"></a>
+                        </figure>
+                      </div>
+                      <div class="media-content column" style="padding-left: 0;">
+                        <a class="title is-6" (click)="goToArtistPage(product.artistName)">{{product.artistName}}</a>
+                      </div>
+                    </div>
+
+                    <p>{{product.description}}</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="container" *ngIf="!(utility.isLoggedIn$ | async)">
+  <div class="columns is-mobile">
+    <div class="column has-text-centered">
+      <h1 class="title is-1" style="margin-bottom: 0;">My Arts</h1>
+      <section class="section">
+        <div class="container">
+          <div class="columns has-text-centered products is-centered">
+            <div class="column is-4-desktop is-3-tablet" *ngFor="let product of products">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img [src]="'http://localhost:3000' + product.imagePath" [alt]='product.name'>
+                  </figure>
+                </div>
+
+                <div class="card-content">
+                  <div class="content">
+                    <p class="title is-4">{{product.name}}</p>
+                    <p>{{product.price}}</p>
+
+                    <div class="media columns is-vcentered">
+                      <div class="media-left column is-one-quarter" style="padding-right: 0;">
+                        <figure class="image is-48x48" style="height:auto; margin-left: 0;"
+                          (click)="goToArtistPage(product.artistName)">
+                          <a (click)="goToArtistPage(product.artistName)">
+                            <img [src]="'http://localhost:3000' + product.userImage" [alt]='product.artistName'
+                              style=" border-radius: 50%; display: block;"></a>
                         </figure>
                       </div>
                       <div class="media-content column" style="padding-left: 0;">

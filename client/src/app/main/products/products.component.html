@@ -28,9 +28,10 @@
 
               <div class="media columns is-vcentered">
                 <div class="media-left column is-one-quarter" style="padding-right: 0;">
-                  <figure class="image is-48x48" style="height:auto;">
-                    <img [src]="'http://localhost:3000' + product.userImage" [alt]='product.artistName'
-                      style=" border-radius: 50%; display: block;">
+                  <figure class="image is-48x48" style="height:auto;" (click)="goToArtistPage(product.artistName)">
+                    <a (click)="goToArtistPage(product.artistName)">
+                      <img [src]="'http://localhost:3000' + product.userImage" [alt]='product.artistName'
+                        style=" border-radius: 50%; display: block;"></a>
                   </figure>
                 </div>
                 <div class="media-content column" style="padding-left: 0;">
