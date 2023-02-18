@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from '../http.service';
 import { Product } from '../product.interface';
+import { User } from '../user.interface';
 
 @Component({
   selector: 'app-artist-page',
@@ -12,7 +13,7 @@ export class ArtistPageComponent {
   constructor(private http: HttpService, private router: Router) { }
   ngOnInit() {
     const artistName = localStorage.getItem('artistName');
-    const sub = this.http.get<{ user: any }>(`artist-by-name?artist_name=${artistName}`).subscribe({
+    const sub = this.http.get<{ user: User }>(`artist-by-name?artist_name=${artistName}`).subscribe({
       next: (res) => {
         this.user = res.user;
         const secSuc = this.http.get<Product[]>(`products/artist-products?artist_id=${this.user._id}`).subscribe({
