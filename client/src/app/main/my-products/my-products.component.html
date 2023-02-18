@@ -40,8 +40,10 @@
 
           <div class="card">
             <footer class="card-footer">
-              <a (click)="delete(product._id)" class="card-footer-item">Delete</a>
-              <a (click)="update(product)" class="card-footer-item">Edit</a>
+              <a (click)="delete(product._id)" class="card-footer-item" title="Delete"><i
+                  class="fa-sharp fa-solid fa-trash"></i></a>
+              <a (click)="update(product)" class="card-footer-item" title="Edit"><i
+                  class="fa-solid fa-pen-to-square"></i></a>
             </footer>
           </div>
         </div>

@@ -45,10 +45,10 @@
 
           <div class="card">
             <footer class="card-footer">
-              <a *ngIf="!product.isFavourite" (click)="addToFavourites(product._id)" class="card-footer-item"><i
-                  title="Add to your favourites" class="fa-regular fa-star"></i></a>
-              <a *ngIf="product.isFavourite" (click)="removeFromFavourites(product._id)" class="card-footer-item"><i
-                  title="Remove from your favourites" class="fa-solid fa-star"></i></a>
+              <a *ngIf="!product.isFavourite" (click)="addToFavourites(product._id)" class="card-footer-item"
+                title="Add to your favourites"><i class="fa-regular fa-star"></i></a>
+              <a *ngIf="product.isFavourite" (click)="removeFromFavourites(product._id)" class="card-footer-item"
+                title="Remove from your favourites"><i class="fa-solid fa-star"></i></a>
             </footer>
           </div>
 
