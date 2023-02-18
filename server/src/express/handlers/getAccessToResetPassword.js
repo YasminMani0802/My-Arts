@@ -20,7 +20,7 @@ async function getAccessToResetPassword(req, res) {
         });
 
         if (!user) {
-            return res.status(400).json('User not exist');
+            return res.status(400).json('User is not exist');
         }
         const {
             password,
