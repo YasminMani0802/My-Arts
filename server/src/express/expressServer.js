@@ -32,6 +32,7 @@ const getFullUserByID = require('./handlers/getFullUserByID');
 const getThreeProducts = require('./handlers/getThreeProducts');
 const saveProductImage = require('./handlers/saveProductImage');
 const saveUserImage = require('./handlers/saveUserImage');
+const rateLimit = require('express-rate-limit');
 
 
 
@@ -47,6 +48,13 @@ server.use(fileUpload({
         fileSize: 50 * 1024 * 1024
     }
 }));
+
+const limiter = rateLimit({
+    windowMs: 24 * 60 * 60 * 1000, // 24 hours
+    max: 12000, // limit each IP to 12000 requests per windowMs
+});
+
+server.use(limiter);
 
 
 

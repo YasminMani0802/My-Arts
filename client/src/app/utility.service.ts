@@ -25,7 +25,7 @@ export class UtilityService {
 
   ngOnInit() { }
 
-  login(credentials: any) {
+  login(credentials: { email: string, password: string }) {
 
     return this.http.post<AuthenticateStatus>(`login`, { ...credentials }).pipe(
       tap(({ authenticated, userName, isArtist, userImage }) => {

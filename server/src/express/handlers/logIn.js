@@ -29,7 +29,9 @@ async function logIn(req, res) {
             _id: retVal._id,
             userName: retVal.fullName,
             isArtist: retVal.isArtist
-        }, 'mykey');
+        }, 'mykey', {
+            expiresIn: '4h'
+        });
 
         res.cookie('jwt', token, {
             httpOnly: true,
