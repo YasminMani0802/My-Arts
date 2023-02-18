@@ -3,11 +3,10 @@
     <div class="container column is-one-third">
       <div class="columns is-centered">
 
-        <div class="column card box">
+        <div class="column card box" *ngIf="user">
           <div class="card-image">
             <figure class="image is-4by3">
-              <img class="userImage" [src]="'http://localhost:3000' + user.imagePath" [alt]='user.fullName'
-                style=" border-radius: 50%;">
+              <img [src]="'http://localhost:3000' + user.imagePath" [alt]='user.fullName' style=" border-radius: 50%;">
             </figure>
           </div>
 

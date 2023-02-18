@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/main/http.service';
 import { UtilityService } from 'src/app/utility.service';
+import { User } from '../user.interface';
 
 @Component({
   selector: 'app-my-user',
@@ -9,12 +10,12 @@ import { UtilityService } from 'src/app/utility.service';
   styleUrls: ['./my-user.component.scss']
 })
 export class MyUserComponent {
-  user: any;
+  user: User;
   constructor(private http: HttpService, private router: Router, private utility: UtilityService) {
 
-    const sub = this.http.get('full-user-by-id').subscribe({
+    const sub = this.http.get<User>('full-user-by-id').subscribe({
       next: (details) => {
-        console.log(details);
+        // console.log(details);
 
         this.user = details;
         sub.unsubscribe();
@@ -23,10 +24,7 @@ export class MyUserComponent {
 
     })
   }
-  ngOnInit() {
-    console.log(this.user);
-
-  }
+  ngOnInit() { }
 
   update() {
     // console.log(this.user);

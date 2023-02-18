@@ -10,8 +10,7 @@ import { User } from '../user.interface';
   styleUrls: ['./artist-page.component.scss']
 })
 export class ArtistPageComponent {
-  constructor(private http: HttpService, private router: Router) { }
-  ngOnInit() {
+  constructor(private http: HttpService) {
     const artistName = localStorage.getItem('artistName');
     const sub = this.http.get<{ user: User }>(`artist-by-name?artist_name=${artistName}`).subscribe({
       next: (res) => {
@@ -28,9 +27,12 @@ export class ArtistPageComponent {
       error: (res) => console.log(res.error)
     })
   }
+  ngOnInit() {
 
-  user: any;
-  artistProducts: Product[];
+  }
+
+  user: User;
+  artistProducts: Product[] = [];
   searchVal: string = '';
 
   addToFavourites(product_id: string) {

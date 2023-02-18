@@ -1,7 +1,7 @@
 <div class="container">
   <div class="columns is-centered">
 
-    <div class="column card box is-half">
+    <div class="column card box is-half" *ngIf="user">
       <div class="card-image">
         <figure class="image is-4by3">
           <img class="userImage" [src]="'http://localhost:3000' + user.imagePath" [alt]='user.fullName'
