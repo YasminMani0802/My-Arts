@@ -24,7 +24,7 @@ export class UpdateProductComponent {
 
     this.form = new FormGroup({
       name: new FormControl(this.utility.product.name, [Validators.required, Validators.minLength(3)]),
-      description: new FormControl(this.utility.product.description, [Validators.minLength(0)]),
+      description: new FormControl(this.utility.product.description),
       numberOfPrice: new FormControl(this.numPrice, [Validators.required, Validators.min(1)]),
       typeOfPrice: new FormControl(this.typePrice, [Validators.required]),
       artistName: new FormControl(this.utility.loggedInUser.name, [Validators.required]),
